@@ -17,14 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//Api Product
+//Lấy bảng Product
 Route::get('product', 'Product\ProductController@product');
-// Route::get('product/{id}', 'Product\ProductController@productByID');
-// Route::get('product', 'Product\ProductController@productSave');
-//API ROUTE REGISTER
+//Lấy Product dựa vào ID
+Route::get('product/{id}', 'Product\ProductController@productByID');
+//Thêm Product
+Route::post('product', 'Product\ProductController@productSave');
+//Sửa Product
+Route::put('product/{product}', 'Product\ProductController@productUpdate');
+//Xoá Product
+Route::delete('product/{product}', 'Product\ProductController@productDelete');
+//Api Register
 Route::post('register','APIUser\UserApiController@register');
-// Route::get('/dangki','OveAuth\ApiUserController@create')->name('dangki');
-
-
-//API ROUTE LOGIN
+//Api Login
 Route::post('login','APIUser\UserApiController@login');
-// Route::get('/dangnhap','OveAuth\ApiUserController@create')->name('api/dangnhap');
+

@@ -20,11 +20,3 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-//ROUTE REGISTER
-Route::get('/dangki','APIUser\RegisterController@create')->name('dangki');
-Route::post('/dangki','APIUser\RegisterController@store')->name('dangki');
-
-//ROUTE LOGIN
-Route::get('/dangnhap','APIUser\LoginController@getLogin')->name('dangnhap');
-Route::post('/dangnhap','APIUser\LoginController@postLogin')->name('dangnhap');
