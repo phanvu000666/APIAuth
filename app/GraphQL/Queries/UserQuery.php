@@ -1,0 +1,37 @@
+<?php
+// app/GraphQL/Queries/UserQuery.php
+
+namespace App\GraphQL\Queries;
+
+use GraphQL;
+use GraphQL\Type\Definition\Type;
+use Rebing\GraphQL\Support\Query;
+use Rebing\GraphQL\Support\SelectFields;
+use App\User;
+
+class UserQuery extends Query {
+
+    protected $attributes = [
+        'name' => 'user',
+    ];
+    public function type(): Type
+    {
+        return GraphQL::type('User');
+    }
+
+    public function args():array
+    {
+        return [
+            'id' => [
+                'name' => 'id',
+                'type' => Type::int(),
+                'rules' => ['required']
+            ],
+        ];
+    }
+
+    public function resolve($root, $args)
+    {
+        return User::findOrFail($args['id']);
+    }
+}
